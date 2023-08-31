@@ -21,8 +21,9 @@
        }
     </style>
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
-    <div>Teachable Machine Image Model <b>v2.4.3</b></div>
+    <div>Teachable Machine Image Model <b>v2.5</b></div>
     <button type="button" onclick="init()">Start</button>
     <div id="webcam-container"></div>
     <div id="label-container"></div>
@@ -78,6 +79,13 @@
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
+
+                
+                const classPrediction2 = prediction[i].className + ': <input type="range" id="probability-range" min="0" max="1" step="0.01">';
+                const probabilityRange = document.getElementById("probability-range");
+                const highestProbabilityValue = (highestProbability * 100).toFixed(2);
+                probabilityRange.value = highestProbabilityValue;
+
             }
         }
     </script>
