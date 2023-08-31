@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Teachable Machine Image Model</title>
     <style>
-        #webcam-container {
-            width: 100vw;
-            height: 100vh;
-        }
-
-        #label-container {
-            position: absolute;
-            bottom: 30px;
-            background: red;
-            color: white;
-            padding: 10px;
-        }
-
-        canvas {
-            width: 1000px;
-            height: 600px;
-            margin: auto;
-        }
+       #webcam-container {
+        width: 100vw;
+        height: 100vh;
+       }
+       #label-container {
+        position: absolute;
+        bottom: 30px;
+        background: red;
+        color: white;
+        padding: 10px;
+       }
+       canvas {
+        width: 1000px;
+        height: 600px;
+        margin: auto;
+       }
     </style>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <body>
-    <div>Teachable Machine Image Model <b>v2.5.2</b></div>
+    <div>Teachable Machine Image Model <b>v2.4.3</b></div>
     <button type="button" onclick="init()">Start</button>
     <div id="webcam-container"></div>
     <div id="label-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
         // More API functions here:
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
@@ -78,44 +73,14 @@
 
         // run the webcam image through the image model
         async function predict() {
-            // Encontrar la etiqueta con la probabilidad más alta
-            let highestProbability = 0;
-            let highestProbabilityIndex = 0;
-
-            for (let i = 0; i < maxPredictions; i++) {
-                if (prediction[i].probability > highestProbability) {
-                    highestProbability = prediction[i].probability;
-                    highestProbabilityIndex = i;
-                }
-            }
-
-
-            // Mostrar la etiqueta con la probabilidad más alta en un elemento <p>
-            const highestLabel = prediction[highestProbabilityIndex].className;
-            const highestProbabilityValue = (highestProbability * 100).toFixed(2);
-
-            const highestLabelElement = document.getElementById("highest-label");
-            highestLabelElement.innerHTML = `Etiqueta más alta: ${highestLabel} (${highestProbabilityValue}%)`;
-
-            // Realizar la próxima predicción en la próxima actualización del frame
-            //window.requestAnimationFrame(loop);
-
             // predict can take in an image, video or canvas html element
             const prediction = await model.predict(webcam.canvas);
             for (let i = 0; i < maxPredictions; i++) {
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
-
-
-                const classPrediction2 = prediction[i].className + ': <input type="range" id="probability-range" min="0" max="1" step="0.01">';
-                const probabilityRange = document.getElementById("probability-range");
-                const highestProbabilityValue = (highestProbability * 100).toFixed(2);
-                probabilityRange.value = highestProbabilityValue;
-
             }
         }
     </script>
 </body>
-
 </html>
