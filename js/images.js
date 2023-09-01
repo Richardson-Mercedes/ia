@@ -32,8 +32,8 @@ async function init() {
     if (!started) {
         started = true;
 
-        const modelURL = URL + "model-1.json";
-        const metadataURL = URL + "metadata-1.json";
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
 
         // load the model and metadata
         // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
