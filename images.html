@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/images.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <title>Images model</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+            <a href="/" class="go-back br-m"><span class="sh-tr">←</span> Volver</a>
+
+            <h1 class="title">Images model</h1>
+
+            <button type="button" id="btn-start" class="btn-start br-m btn" onclick="init()">Start</button>
+
+            <div class="recognition-wrapper">
+                <div id="webcam-container" class="br-m"></div>
+                <div id="label-container" class="br-m"></div>
+            </div>
+
+            <button type="button" id="btn-stop" class="btn-stop br-m btn hide">Stop</button>
+        </div>
+    </main>
+
+    <script src="js/images.js"></script>
+</body>
+
+</html>

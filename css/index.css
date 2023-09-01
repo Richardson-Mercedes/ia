@@ -1,0 +1,22 @@
+.buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.buttons-container a {
+    border: 3px dashed var(--primary-color);
+    color: var(--primary-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 30px 60px;
+    font-size: 18px;
+}
+
+.buttons-container a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 3px dashed var(--white);
+    box-shadow: 0 0 5px 5px var(--primary-color);
+}
